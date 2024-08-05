@@ -52,18 +52,4 @@ struct header_t {
 
 the idea is to do `sbrk(total_size)` where total_size = size + sizeof(header_t) to keep track of the size of the block
 
-```C
-typedef char ALIGN[16] // align header to be 16 bytes
-
-union header {
-    struct {
-        size_t size;
-        unsinged is_free;
-        union header_t *next;
-    } s;
-    ALIGN stub;
-};
-typedef union header header_t;
-
-header_t *head, *tail; // keep track of the list
-```
+mutex: a mutex is a lock that we set before using a shared resource and release after using it
